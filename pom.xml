@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>board</artifactId>
+	<artifactId>shop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>board</name>
+	<name>shop</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -50,7 +50,12 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-			<dependency>
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -67,21 +72,13 @@
 			<scope>test</scope>
 		</dependency>
 		
-	<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>8.0.33</version> <!-- 최신 버전을 사용할 것을 권장 -->
-    <scope>runtime</scope>
-</dependency>
-
-		
-		 <!-- jsp사용 -->
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-		</dependency>
-		
-		<dependency>
+		<!-- jsp사용 -->
+        <dependency>
+           <groupId>org.apache.tomcat.embed</groupId>
+          <artifactId>tomcat-embed-jasper</artifactId>
+       </dependency>
+       
+        <dependency>
 		  <groupId>jakarta.servlet.jsp.jstl</groupId>
 		  <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
  	   </dependency>
@@ -89,7 +86,13 @@
 		 <groupId>org.glassfish.web</groupId>
 		 <artifactId>jakarta.servlet.jsp.jstl</artifactId>
 	   </dependency>
-	   
+		
+	   <dependency>
+		<groupId>org.sitemesh</groupId>
+		<artifactId>sitemesh</artifactId>
+		<version>3.2.1</version>
+	   </dependency>
+		
 	</dependencies>
 
 	<build>
