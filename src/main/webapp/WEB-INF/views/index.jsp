@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ include file="default.jsp" %>
-<%
-    request.setAttribute("pageTitle", "Welcome to the Bulletin Board");
-    request.setAttribute("contentPage", "indexContent.jsp");
-%>
 
 <!DOCTYPE html>
 <html>
@@ -13,8 +10,14 @@
 <meta charset="UTF-8">
 <title>HOME</title>
 </head>
-<body>
-  this is homepage!!
 
+
+	
+<body>
+  <h2>This is homepage!!</h2>
+  <p>Welcome to the 애완 호텔.</p>
 </body>
+
+
+
 </html>

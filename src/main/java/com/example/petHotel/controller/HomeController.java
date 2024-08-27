@@ -14,10 +14,10 @@ public class HomeController {
 		return "redirect:/index";
 	}
 	
-	@RequestMapping("/index")
-	public String index() {
-		
-		return "/index";
+	@GetMapping("/index")
+	public String index() 
+	{
+		return "index";
 	}
 	
 

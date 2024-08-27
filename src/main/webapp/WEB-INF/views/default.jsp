@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
- <title><c:out value="${pageTitle}" default="Pet Hotel" /></title>
+ <title></title>
     <style>
         /* 간단한 스타일링 예제 */
         body {
@@ -40,7 +40,7 @@
 </head>
 <body>
     <header>
-        <h1>Bulletin Board</h1>
+        <h1>애완 호텔</h1>
     </header>
 
     <nav>
@@ -58,14 +58,11 @@
             </c:otherwise>
         </c:choose>
     </nav>
-
-    <div class="container">
-        <!-- 컨텐츠 영역 -->
-        <jsp:include page="${contentPage}" />
-    </div>
+	
+	
 
     <footer>
-        <p>&copy; 2024 Bulletin Board. All rights reserved.</p>
+        <p>&copy; 2024 --- 애완 호텔 --- </p>
     </footer>
 </body>
 </html>
