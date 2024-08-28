@@ -3,5 +3,14 @@
 
 <mapper namespace="com.example.petHotel.mapper.UserMapper">
 
+<insert id="insertUser"  parameterType="com.example.petHotel.dto.UserDto">
+    insert into user (username , pwd)
+    values ( #{username} , #{pwd} )
+</insert>
+
+<select id="getuser"  parameterType="String" resultType="com.example.petHotel.dto.UserDto">
+   select * from user
+   where username=#{username}
+</select>
 
 </mapper>

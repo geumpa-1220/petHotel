@@ -11,13 +11,13 @@ public class HomeController {
 	@GetMapping("/")
 	public String home()
 	{
-		return "redirect:/index";
+		return "redirect:/main/index";
 	}
 	
-	@GetMapping("/index")
+	@GetMapping("/main/index")
 	public String index() 
 	{
-		return "index";
+		return "/main/index";
 	}
 	
 
