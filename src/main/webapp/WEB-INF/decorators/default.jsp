@@ -14,19 +14,25 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-        header, footer {
+         header, footer {
             background-color: #333;
             color: white;
             padding: 10px 0;
-            text-align: center;
         }
-        nav {
-            margin: 10px;
-            text-align: center;
-        }
-        nav a {
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+       }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+       }
+       
+        a {
             margin: 0 15px;
-            color: #333;
+            color: white;
             text-decoration: none;
         }
         .container {
@@ -35,32 +41,50 @@
             padding: 20px;
             background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+         }
     </style>
     <sitemesh:write property="head"/>
 </head>
 <body>
 <header>
-        <h1>애완 호텔</h1>
- </header>
-
-    <nav>
+        
+        <h1><a href="../main/index">HOME</a></h1>
+         
         <c:choose>
-            <c:when test="${not empty sessionScope.user}">
-                <a href="../main/index">Home</a>
-                <a href="../user/posts">Posts</a>
-                <a href="../user/logout">Logout</a>
-                <span>Hello, ${sessionScope.user.username}</span>
+            <c:when test="${not empty sessionScope.role and sessionScope.role == 'admin' }">
+               <div>
+                   <a href="../admin/mypage" >Hello,${sessionScope.username}</a>
+                   <a href="../post/answer" >ANSWERS</a>
+               </div>
+               
+                <a href="../admin/logout">LOG OUT</a>
             </c:when>
+            
+            <c:when test="${not empty sessionScope.role and sessionScope.role == 'user'}">
+               <div>
+                    <a href="../user/mypage"  > ${sessionScope.username}님</a>
+                    <a href="../posts/question" >MY QUESTIONS</a>
+               </div>
+                <a href="../user/logout">LOG OUT</a>
+            </c:when>
+            
             <c:otherwise>
-                <a href="../main/index">Home</a>
-                <a href="../user/login">Login</a>
-                <a href="../user/signup">Sign Up</a>
+               <div>
+                   <a href="../reserve/reserve">RRSERVATION</a>
+                   <a href="../user/login">LOGIN</a>
+                   <a href="../user/signup">SIGN UP</a>
+               </div>
+                
             </c:otherwise>
         </c:choose>
-    </nav>
+    
+    
+ </header>
+
+    
     <sitemesh:write property="body"/>
-    <footer>
+    
+ <footer>
     <p>&copy; 2024 --- 애완 호텔 --- </p>
 </footer>
 </body>

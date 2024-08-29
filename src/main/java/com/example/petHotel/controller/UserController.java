@@ -40,7 +40,9 @@ public class UserController {
 		UserDto db_dto=service.login( userdto.getUsername() );
 		if( db_dto != null && db_dto.getPwd().equals( userdto.getPwd() ) )
 		{
-			session.setAttribute("user",db_dto.getId());
+			session.setAttribute("userid",db_dto.getId() );
+			session.setAttribute("username", db_dto.getUsername() );
+			session.setAttribute("role", db_dto.getRole() );
 			return "redirect:/main/index";
 		}
 		else
@@ -52,6 +54,18 @@ public class UserController {
 		
 	}
 	
+	@GetMapping("/user/logout")
+	public String logout(HttpSession session)
+	{
+		session.invalidate();
+		return "redirect:/main/index";
+	}
+	
+	@GetMapping("/user/mypage")
+	public String mypage(Model model, HttpSession session)
+	{
+		return "/user/mypage";
+	}
 
 	
 }

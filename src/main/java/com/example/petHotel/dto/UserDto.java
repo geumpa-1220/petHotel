@@ -7,6 +7,6 @@ import lombok.Data;
 public class UserDto {
 	
 	private int id;
-	private String username,pwd;
+	private String username,pwd,role;
 
 }
