@@ -1,5 +1,8 @@
 package com.example.petHotel.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 public class UserController {
 	
 	@Autowired
-	private UserService service;
+	private UserService userservice;
 	
 	@GetMapping("/user/signup")
 	public String signupForm()
@@ -26,7 +29,7 @@ public class UserController {
 	@PostMapping("/user/signup")
 	public String signup(UserDto userdto)
 	{
-		service.signUp(userdto);
+		userservice.signUp(userdto);
 		return "redirect:/user/login";
 	}
 	
@@ -38,10 +41,10 @@ public class UserController {
 	@PostMapping("/user/login")
 	public String login(UserDto userdto , HttpSession session,Model model)
 	{
-		UserDto db_dto=service.login( userdto.getUsername() );
+		UserDto db_dto=userservice.login( userdto.getUsername() );
 		if( db_dto != null && db_dto.getPwd().equals( userdto.getPwd() ) )
 		{
-			session.setAttribute("userid",db_dto.getId() );
+			session.setAttribute("id",db_dto.getId() );
 			session.setAttribute("username", db_dto.getUsername() );
 			session.setAttribute("role", db_dto.getRole() );
 			return "redirect:/main/index";
@@ -63,28 +66,26 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/mypage")
-	public String myquestions(QuestionDto questionDto,Model model, HttpSession session)
+	public String mypage(Model model , HttpSession session )
 	{
-		Integer userid = (Integer)session.getAttribute("userid");
-		questionDto = service.questions(userid);
-		
-		model.addAttribute("title", questionDto.getTitle());
-		model.addAttribute("time",questionDto.getQtime());
-		
 		return "/user/mypage";
 	}
 	
-	@GetMapping("/user/qna")
-	public String qna(QuestionDto questionDto,Model model, HttpSession session)
+	@PostMapping("user/update")
+	public String update(UserDto userdto,HttpSession session)
 	{
-		Integer userid = (Integer)session.getAttribute("userid");
-		questionDto = service.questions(userid);
-		
-		model.addAttribute("title", questionDto.getTitle());
-		model.addAttribute("time",questionDto.getQtime());
-		
-		return "/user/qna";
+		Integer id=(Integer)session.getAttribute("id");
+		userdto.setId(id);
+		userservice.update(userdto);
+		return "redirect:/user/mypage";
 	}
+	
+	
+	
+	
+	
+	
+	
 
 	
 }

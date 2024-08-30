@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,26 +46,41 @@
     tr:hover {
         background-color: #ddd;
     }
+    tr a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+    }
 </style>
 </head>
 <body>
 <div class="container">
-    <h2 id="title">Q&A LIST</h2>
+    <h2 id="title">Q&A -- LIST</h2>
  </div>
- <table>
-    <thead>
-     <tr>
-       <th>USER</th>
-       <th>QUESTIONS</th>
-       <th>CREATE_AT</th>
-      </tr>
-    </thead>
-    <tr>
-       <td>${ sessionScope.username }</td>
-       <td>${ title }</td>
-       <td>${ time }</td>
-    </tr>
- </table>
+  <table>
+        <thead>
+            <tr>
+                <th>USER</th>
+                <th>QUESTIONS</th>
+                <th>CREATE_AT</th>
+            </tr>
+        </thead>
+        <tbody>
+         <c:forEach var="qnaList"  items="${ questionList }">
+            <tr>
+                <td><a href="../user/qnapost">${ sessionScope.username }</a></td>
+                <td><a href="../user/qnapost">${ qnaList.title }</a></td>
+                <td><a href="../user/qnapost">${ qnaList.qtime }</a></td>
+                <td><input type="botton" value="DELETE"></td>
+            </tr>
+         </c:forEach>
+        </tbody>
+        <tfoot>
+            <tr>
+               <input type="botton" value="WRITE QUESTION">
+            </tr>
+        </tfoot>
+    </table>
 
 </body>
 </html>

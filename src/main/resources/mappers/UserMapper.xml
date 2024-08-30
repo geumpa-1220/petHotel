@@ -13,9 +13,12 @@
    where username=#{username}
 </select>
 
-<select id="questions" parameterType="int"  resultType="com.example.petHotel.dto.QuestionDto">
-   select * from question
-   where userid=#{userid}
-</select>
+<update id="update" parameterType="com.example.petHotel.dto.UserDto">
+    update user set
+    username=#{username} , pwd=#{pwd}
+    where id = #{id}
+</update>
+
+
 
 </mapper>

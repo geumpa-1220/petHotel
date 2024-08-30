@@ -1,5 +1,8 @@
 package com.example.petHotel.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +26,9 @@ public class UserService {
 		return mapper.getuser(username);
 	}
 	
-	public QuestionDto questions( int userid)
+	public void update(UserDto userdto)
 	{
-		return mapper.questions(userid);
+		 mapper.update(userdto);
 	}
+	
 }

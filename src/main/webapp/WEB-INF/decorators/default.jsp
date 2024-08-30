@@ -60,7 +60,7 @@
             </c:when>
             
             <c:when test="${not empty sessionScope.role and sessionScope.role == 'user'}">
-                <a href="../user/qna" >Q&A</a>
+                <a href="../question/list" >Q&A</a>
                 <a href="../user/mypage"  > ${sessionScope.username}님</a>
                 <a href="../reserve/reserve">RRSERVATION</a>
                 <a href="../user/logout">LOG OUT</a> 
