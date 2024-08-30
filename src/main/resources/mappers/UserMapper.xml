@@ -13,4 +13,9 @@
    where username=#{username}
 </select>
 
+<select id="questions" parameterType="int"  resultType="com.example.petHotel.dto.QuestionDto">
+   select * from question
+   where userid=#{userid}
+</select>
+
 </mapper>

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.petHotel.dto.QuestionDto;
 import com.example.petHotel.dto.UserDto;
 import com.example.petHotel.service.UserService;
 
@@ -62,9 +63,27 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/mypage")
-	public String mypage(Model model, HttpSession session)
+	public String myquestions(QuestionDto questionDto,Model model, HttpSession session)
 	{
+		Integer userid = (Integer)session.getAttribute("userid");
+		questionDto = service.questions(userid);
+		
+		model.addAttribute("title", questionDto.getTitle());
+		model.addAttribute("time",questionDto.getQtime());
+		
 		return "/user/mypage";
+	}
+	
+	@GetMapping("/user/qna")
+	public String qna(QuestionDto questionDto,Model model, HttpSession session)
+	{
+		Integer userid = (Integer)session.getAttribute("userid");
+		questionDto = service.questions(userid);
+		
+		model.addAttribute("title", questionDto.getTitle());
+		model.addAttribute("time",questionDto.getQtime());
+		
+		return "/user/qna";
 	}
 
 	

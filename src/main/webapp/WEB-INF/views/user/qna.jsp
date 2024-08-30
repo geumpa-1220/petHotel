@@ -19,7 +19,7 @@
         background-color: white;
         box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     }
-    #username {
+    #title {
         text-align: center;
     }
     table {
@@ -45,21 +45,21 @@
         background-color: #ddd;
     }
 </style>
-
 </head>
 <body>
-
- <div class="container">
-    <h2 id="username">${sessionScope.username}님</h2>
+<div class="container">
+    <h2 id="title">Q&A LIST</h2>
  </div>
  <table>
     <thead>
      <tr>
+       <th>USER</th>
        <th>QUESTIONS</th>
        <th>CREATE_AT</th>
       </tr>
     </thead>
     <tr>
+       <td>${ sessionScope.username }</td>
        <td>${ title }</td>
        <td>${ time }</td>
     </tr>

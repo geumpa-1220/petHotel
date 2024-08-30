@@ -40,7 +40,7 @@
             margin: 20px auto;
             padding: 20px;
             background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 1);
          }
     </style>
     <sitemesh:write property="head"/>
@@ -56,25 +56,23 @@
                    <a href="../admin/mypage" >Hello,${sessionScope.username}</a>
                    <a href="../post/answer" >ANSWERS</a>
                </div>
-               
                 <a href="../admin/logout">LOG OUT</a>
             </c:when>
             
             <c:when test="${not empty sessionScope.role and sessionScope.role == 'user'}">
-               <div>
-                    <a href="../user/mypage"  > ${sessionScope.username}님</a>
-                    <a href="../posts/question" >MY QUESTIONS</a>
-               </div>
-                <a href="../user/logout">LOG OUT</a>
+                <a href="../user/qna" >Q&A</a>
+                <a href="../user/mypage"  > ${sessionScope.username}님</a>
+                <a href="../reserve/reserve">RRSERVATION</a>
+                <a href="../user/logout">LOG OUT</a> 
             </c:when>
             
-            <c:otherwise>
+            <c:otherwise>   
+                   <a href="../user/login" >Q&A</a>
+                   <a href="../user/login">RRSERVATION</a>
                <div>
-                   <a href="../reserve/reserve">RRSERVATION</a>
                    <a href="../user/login">LOGIN</a>
                    <a href="../user/signup">SIGN UP</a>
-               </div>
-                
+               </div>   
             </c:otherwise>
         </c:choose>
     
