@@ -51,7 +51,26 @@
         color: inherit;
         text-decoration: none;
     }
-</style>
+	.action-buttons {
+	    width: 100%;
+	}
+	.action-buttons form {
+	    margin: 0;
+	    padding: 0;
+	}
+	.action-buttons input[type="submit"] {
+	    width: 100%;
+	    padding: 15px;
+	    background-color: #808080;
+	    color: white;
+	    border: none;
+	    cursor: pointer;
+	    font-size: 16px;
+	    text-align: center;
+	}
+	.action-buttons input[type="submit"]:hover {
+	    background-color: #A9A9A9; /* 커서를 올렸을 때 색상 변화 */
+	}</style>
 </head>
 <body>
 <div class="container">
@@ -63,24 +82,31 @@
                 <th>USER</th>
                 <th>QUESTIONS</th>
                 <th>CREATE_AT</th>
+				<th>DELETE</th>
             </tr>
         </thead>
         <tbody>
          <c:forEach var="qnaList"  items="${ questionList }">
             <tr>
-                <td><a href="../user/qnapost">${ sessionScope.username }</a></td>
-                <td><a href="../user/qnapost">${ qnaList.title }</a></td>
-                <td><a href="../user/qnapost">${ qnaList.qtime }</a></td>
-                <td><input type="botton" value="DELETE"></td>
+                <td><a href="../question/content?id=${qnaList.id}">${ sessionScope.username }</a></td>
+                <td><a href="../question/content?id=${qnaList.id}">${ qnaList.title }</a></td>
+                <td><a href="../question/content?id=${qnaList.id}">${ qnaList.qtime }</a></td>
+				
+                <td>
+					<form action="/question/delete" method="post" style="display:inline;">
+					   <input type="hidden" name="questionId" value="${qnaList.id}">
+					   <input type="submit" value="DELETE">
+				    </form>				
+				</td>
             </tr>
          </c:forEach>
         </tbody>
-        <tfoot>
-            <tr>
-               <input type="botton" value="WRITE QUESTION">
-            </tr>
-        </tfoot>
-    </table>
-
+ </table>
+ 
+   <div class="action-buttons">
+        <form action="../question/write" method="get">
+            <input type="submit" value="WRITE QUESTION">
+        </form>    
+   </div>
 </body>
 </html>

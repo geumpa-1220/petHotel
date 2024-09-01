@@ -2,15 +2,11 @@ package com.example.petHotel.dto;
 
 import java.sql.Timestamp;
 
-import lombok.Data;
-
-@Data
-
-public class QuestionDto {
+public class QnaDto {
 	private int id,userid;
-	private String title,content;
-	private Timestamp qtime;
-	
+	private String title,content,acontent;
+	private Timestamp qtime,atime;
+
 	
 	public int getId() {
 		return id;
@@ -36,12 +32,23 @@ public class QuestionDto {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getAcontent() {
+		return acontent;
+	}
+	public void setAcontent(String acontent) {
+		this.acontent = acontent;
+	}
 	public Timestamp getQtime() {
 		return qtime;
 	}
 	public void setQtime(Timestamp qtime) {
 		this.qtime = qtime;
 	}
-	
-
+	public Timestamp getAtime() {
+		return atime;
+	}
+	public void setAtime(Timestamp atime) {
+		this.atime = atime;
+	}
+		
 }

@@ -7,5 +7,22 @@
    where userid=#{userid}
 </select>
 
+<insert id="qinsert" parameterType="com.example.petHotel.dto.QuestionDto">
+   insert into question (userid,title,content)
+   values (#{userid} , #{title} , #{content})
+</insert>
+
+<delete id="qdelete" parameterType="int">
+   delete from question
+   where id= #{questionId}
+</delete>
+
+<select id="getQnaContent" resultType="com.example.petHotel.dto.QnaDto">
+   select question.* , answer.content as acontent , answer.atime
+   from question inner join answer 
+   on question.id = #{id}
+</select>
+
+
 
 </mapper>
