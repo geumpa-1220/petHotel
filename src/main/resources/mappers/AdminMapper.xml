@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.petHotel.mapper.AdminMapper">
+
+<select id="login" parameterType="String" resultType="com.example.petHotel.dto.AdminDto">
+      select * from admin
+      where username=#{username}
+</select>
+
+<update id="update"  parameterType="com.example.petHotel.dto.AdminDto">
+      update admin set
+      username = #{username} , pwd = #{pwd}
+      where id = #{id}
+</update>
+
+<delete id="delete" parameterType="int">
+       delete from admin
+       where id = #{id}
+</delete>
+
+</mapper>

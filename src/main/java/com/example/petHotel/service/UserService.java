@@ -31,4 +31,9 @@ public class UserService {
 		 mapper.update(userdto);
 	}
 	
+	public void deleteUser(int id)
+	{
+		mapper.deleteUser(id);
+	}
+	
 }

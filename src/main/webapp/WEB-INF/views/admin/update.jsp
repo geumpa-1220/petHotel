@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Update User Information</title>
+<title>Update Admin Information</title>
 
 <style>
     body {
@@ -57,7 +57,8 @@
 <div class="container">
    <h2>UPDATE MY INFORMATION</h2>
 
-   <form action="/user/update" method="post">
+   <form action="/admin/update" method="post">
+   
      <label for="username">UPDATE MY Username:</label>
      <input type="text" id="username" name="username" value="${sessionScope.username}" required /><br>
 

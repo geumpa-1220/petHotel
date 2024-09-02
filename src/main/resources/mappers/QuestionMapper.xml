@@ -19,8 +19,9 @@
 
 <select id="getQnaContent" resultType="com.example.petHotel.dto.QnaDto">
    select question.* , answer.content as acontent , answer.atime
-   from question inner join answer 
-   on question.id = #{id}
+   from question 
+   left join answer on question.id = answer.qid
+   where question.id = #{id}
 </select>
 
 

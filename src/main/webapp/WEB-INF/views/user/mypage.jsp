@@ -15,9 +15,8 @@
         background-color: #f4f4f4;
     }
     .navi {
-        width: 80%;
-        margin: 20px auto;
-        padding: 10px;
+        width: 100%;
+        padding: 20px;
         background-color: #333;
         color: white;
         text-align: center;
@@ -25,11 +24,12 @@
     }
     .container {
         width: 80%;
-        margin: 20px auto;
+        margin: 40px auto;
         padding: 20px;
         background-color: white;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: center; /* 가운데 정렬 */
+        text-align: center;
+        border-radius: 10px;
     }
     #username {
         font-size: 24px;
@@ -38,8 +38,8 @@
     }
     .action-button {
         display: inline-block;
-        margin: 10px;
-        padding: 10px 20px;
+        margin: 20px 10px;
+        padding: 15px 30px;
         background-color: #333;
         color: white;
         text-decoration: none;
@@ -51,7 +51,6 @@
         background-color: #555;
         color: white;
     }
-
 </style>
 </head>
 <body>
@@ -61,14 +60,10 @@
 </nav>
 
 <div class="container">
-    <div id="update">
-        <a href="../user/update" class="action-button">UPDATE MY INFORMATION</a>
-    </div>
-    
-    <div id="delete">
-        <a href="../user/delete" class="action-button">DELETE MY ACCOUNT</a>
-    </div> 
+    <a href="../user/update" class="action-button">UPDATE MY INFORMATION</a>
+    <a href="../user/delete" class="action-button">DELETE MY ACCOUNT</a>
 </div>
 
 </body>
 </html>
+

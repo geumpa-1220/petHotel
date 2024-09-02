@@ -52,11 +52,10 @@
          
         <c:choose>
             <c:when test="${not empty sessionScope.role and sessionScope.role == 'admin' }">
-               <div>
-                   <a href="../admin/mypage" >Hello,${sessionScope.username}</a>
-                   <a href="../post/answer" >ANSWERS</a>
-               </div>
-                <a href="../admin/logout">LOG OUT</a>
+               <a href="../answer/list" >Q&A</a>
+                <a href="../admin/mypage"  >관리자: ${sessionScope.username}</a>
+                <a href="../reserve/reserve">RRSERVATION</a>
+                <a href="../admin/logout">LOG OUT</a> 
             </c:when>
             
             <c:when test="${not empty sessionScope.role and sessionScope.role == 'user'}">

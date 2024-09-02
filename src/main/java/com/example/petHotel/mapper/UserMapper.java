@@ -14,5 +14,6 @@ public interface UserMapper {
 	void insertUser(UserDto userdto);
 	UserDto getuser(String username);
 	void update(UserDto userdto);
+	void deleteUser(int id);
 
 }

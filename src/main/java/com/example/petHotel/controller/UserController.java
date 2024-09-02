@@ -66,18 +66,36 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/mypage")
-	public String mypage(Model model , HttpSession session )
+	public String mypage()
 	{
 		return "/user/mypage";
 	}
 	
-	@PostMapping("user/update")
+	
+	@GetMapping("/user/update")
+	public String updateForm()
+	{
+		return "/user/update";
+	}
+	@PostMapping("/user/update")
 	public String update(UserDto userdto,HttpSession session)
 	{
 		Integer id=(Integer)session.getAttribute("id");
 		userdto.setId(id);
 		userservice.update(userdto);
+		
+		session.setAttribute("username", userdto.getUsername());
+		
 		return "redirect:/user/mypage";
+	}
+	
+	@GetMapping("/user/delete")
+	public String delete(HttpSession session )
+	{
+		int id=(int) session.getAttribute("id");
+		userservice.deleteUser(id);
+		session.invalidate();
+		return "/main/index";
 	}
 	
 	
