@@ -5,6 +5,7 @@
 <select id="questions"  parameterType="int"  resultType="com.example.petHotel.dto.QuestionDto">
    select * from question
    where userid=#{userid}
+   order by id desc
 </select>
 
 <insert id="qinsert" parameterType="com.example.petHotel.dto.QuestionDto">

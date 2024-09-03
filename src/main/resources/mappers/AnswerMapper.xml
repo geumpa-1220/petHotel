@@ -6,6 +6,7 @@
      select question.* , answer.content as acontent
      from question
      left join answer on question.id = answer.qid
+     order by question.id desc
 </select>
 
 <select id="getQnaById" resultType="com.example.petHotel.dto.QnaDto">
@@ -15,5 +16,9 @@
       where question.id = #{id}
 </select>
 
+<insert id="write"  parameterType="com.example.petHotel.dto.AnswerDto">
+      insert into answer (qid,content)
+      values ( #{qid} , #{content} )
+</insert>
 
 </mapper>

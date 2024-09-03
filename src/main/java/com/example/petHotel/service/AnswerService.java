@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.petHotel.dto.AnswerDto;
 import com.example.petHotel.dto.QnaDto;
 import com.example.petHotel.mapper.AnswerMapper;
 
@@ -24,9 +25,9 @@ public class AnswerService {
 		return mapper.getQnaById(id);
 	}
 	
-	public void write(  )
+	public void write( AnswerDto answerDto )
 	{
-		mapper.write();
+		mapper.write( answerDto );
 	}
 	
 

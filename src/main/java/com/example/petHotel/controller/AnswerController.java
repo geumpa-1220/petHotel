@@ -40,7 +40,7 @@ public class AnswerController {
 	@PostMapping("/answer/write")
 	public String write(AnswerDto answerDto)
 	{
-		service.write();
+		service.write(answerDto);
 		
 		return "redirect:/answer/list";
 	}
