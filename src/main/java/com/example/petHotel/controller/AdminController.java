@@ -38,11 +38,6 @@ public class AdminController {
 	
 	
 	
-	@GetMapping("/admin/mypage")
-	public String mypageForm()
-	{
-		return "/admin/mypage";
-	}
 	
 	@GetMapping("/admin/update")
 	public String updateForm()
@@ -66,6 +61,11 @@ public class AdminController {
 	}
 	
 	
+	@GetMapping("/admin/mypage")
+	public String mypageForm()
+	{
+		return "/admin/mypage";
+	}
 	
 	
 	
