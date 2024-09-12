@@ -22,6 +22,6 @@ public interface UserService {
 	public String login(UserDto userDto , HttpSession session , Model model);
 	public String update(UserDto userdto , HttpSession session);
 	public void deleteUser(HttpSession session);
-	
+	public String myQuestionList(Model model , HttpSession session);
 	
 }

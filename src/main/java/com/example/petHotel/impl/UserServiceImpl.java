@@ -1,9 +1,12 @@
 package com.example.petHotel.impl;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.example.petHotel.dto.QuestionDto;
 import com.example.petHotel.dto.UserDto;
 import com.example.petHotel.mapper.UserMapper;
 import com.example.petHotel.service.UserService;
@@ -62,6 +65,15 @@ public class UserServiceImpl implements UserService {
 		session.invalidate();
 	}
 	
+	@Override
+	public String myQuestionList(Model model,HttpSession session)
+	{
+		int userid=(int)session.getAttribute("id");
+		ArrayList<QuestionDto> qDtoList=userMapper.myQuestionList(userid);
+		model.addAttribute("myQuestionList", qDtoList);
+		
+		return "/user/mypage";
+	}
 }
 
 

@@ -25,5 +25,10 @@
 </delete>
 
 
+<select id="myQuestionList">
+     select * from question
+     where userid = #{userid}
+</select>
+
 
 </mapper>

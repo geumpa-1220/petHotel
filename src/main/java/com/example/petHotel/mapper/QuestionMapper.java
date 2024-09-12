@@ -13,4 +13,5 @@ public interface QuestionMapper {
 	void qinsert(QuestionDto questionDto);
 	void qdelete(int questionId);
 	QnaDto getQnaContent(int id);
+	
 }

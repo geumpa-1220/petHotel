@@ -15,5 +15,6 @@ public interface UserMapper {
 	UserDto login(String username);
 	void update(UserDto userdto);
 	void deleteUser(int id);
+	ArrayList<QuestionDto> myQuestionList(int userid);
 
 }

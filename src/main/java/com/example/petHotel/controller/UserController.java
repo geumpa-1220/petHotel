@@ -51,13 +51,7 @@ public class UserController {
 		return "redirect:/main/index";
 	}
 	
-	//예약정보 들어올 예정
-	@GetMapping("/user/mypage")
-	public String mypageForm()
-	{
-		return "/user/mypage";
-	}
-	
+
 	
 	@GetMapping("/user/update")
 	public String updateForm()
@@ -79,6 +73,12 @@ public class UserController {
 	
 	
 	
+	//예약정보 들어올 예정
+	@GetMapping("/user/mypage")
+	public String mypageForm(Model model , HttpSession session)
+	{
+		return userService.myQuestionList(model, session);
+	}
 	
 	
 	

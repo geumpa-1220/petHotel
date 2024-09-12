@@ -22,7 +22,49 @@
         text-align: center;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    .container {
+     #username {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+    }
+      .container {
+        width: 80%;
+        margin: 20px auto;
+        padding: 2px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    }
+  
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #333;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+    tr a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+    }
+   
+   
+     .footerContainer {
         width: 80%;
         margin: 40px auto;
         padding: 20px;
@@ -30,11 +72,6 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         text-align: center;
         border-radius: 10px;
-    }
-    #username {
-        font-size: 24px;
-        font-weight: bold;
-        color: #fff;
     }
     .action-button {
         display: inline-block;
@@ -51,6 +88,7 @@
         background-color: #555;
         color: white;
     }
+    
 </style>
 </head>
 <body>
@@ -59,11 +97,50 @@
     <h2 id="username">${sessionScope.username}님</h2>
 </nav>
 
+
 <div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>USER</th>
+                <th>QUESTIONS</th>
+                <th>CREATE_AT</th>
+				<th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
+         <c:forEach var="qList"  items="${ myQuestionList }">
+            <tr>
+                <td><a href="../question/content?id=${qList.id}">${ qList.username }</a></td>
+                <td><a href="../question/content?id=${qList.id}">${ qList.title }</a></td>
+                <td><a href="../question/content?id=${qList.id}">${ qList.qtime }</a></td> 
+                <td>
+                    <form action="/question/delete" method="post" style="display:inline;">
+                     <input type="hidden" name="questionId" value="${qList.id}">
+                     <input type="submit" value="DELETE">
+                   </form>				
+                </td>
+            </tr>
+         </c:forEach>
+        </tbody>
+ </table> 
+</div>
+
+
+<div class="footerContainer">
     <a href="../user/update" class="action-button">UPDATE MY INFORMATION</a>
     <a href="../user/delete" class="action-button">DELETE MY ACCOUNT</a>
 </div>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 
