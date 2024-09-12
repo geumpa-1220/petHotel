@@ -19,24 +19,13 @@ import jakarta.servlet.http.HttpSession;
 public class QuestionController {
 	
 	@Autowired
-	private QuestionService questionservice;
+	private QuestionService questionService;
 	
 	
 	@GetMapping("/question/list")
-	public String qnalist( Model model, HttpSession session)
+	public String questionList( Model model)
 	{
-		int userid = (int) session.getAttribute("id");
-		ArrayList<QuestionDto> questionDtoList = questionservice.questions(userid);
-		
-		if (questionDtoList == null)
-		{
-			questionDtoList = new ArrayList<>();
-		}
-		model.addAttribute("questionList",questionDtoList);
-
-	    
-		
-		return "/question/list";
+		return questionService.questionList(model);
 	}
 	
 	@GetMapping("/question/write")
@@ -45,19 +34,16 @@ public class QuestionController {
 		return "/question/write";
 	}
 	@PostMapping("/writeOk")
-	public String write(QuestionDto questionDto,HttpSession session)
+	public String writeQuestion(QuestionDto questionDto,HttpSession session)
 	{
-		int userid = (int)session.getAttribute("id");
-		questionDto.setUserid(userid);
-		questionservice.qinsert(questionDto);
-		
-		return "redirect:/question/list";
+		return questionService.writeQuestion(questionDto, session);
 	}
+	
 	
 	@PostMapping("/question/delete")
 	public String delete(@RequestParam("questionId") int questionId)
 	{
-		questionservice.qdelete(questionId);
+		questionService.deleteQuestion(questionId);
 		
 		return "redirect:/question/list";
 	}
@@ -65,10 +51,7 @@ public class QuestionController {
 	@GetMapping("/question/content")
 	public String content(Model model,@RequestParam("id") int id)
 	{
-		QnaDto contents = questionservice.getQnaContent(id);
-		model.addAttribute("content", contents);
-		
-		return "/question/content";
+		return questionService.getQnaContent(model, id);
 	}
 
 }

@@ -1,37 +1,24 @@
 package com.example.petHotel.service;
 
-import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import com.example.petHotel.dto.QnaDto;
+
+import org.springframework.ui.Model;
+
+
 import com.example.petHotel.dto.QuestionDto;
-import com.example.petHotel.mapper.QuestionMapper;
 
-@Service
-public class QuestionService {
 
-	@Autowired
-	private QuestionMapper mapper;
+import jakarta.servlet.http.HttpSession;
+
+
+public interface QuestionService {
+
 	
-	public ArrayList<QuestionDto> questions( int userid)
-	{
-		return mapper.questions(userid);
-	}
 	
-	public void qinsert(QuestionDto questionDto)
-	{
-		mapper.qinsert(questionDto);
-	}
-	
-	public void qdelete(int questionId)
-	{
-		mapper.qdelete(questionId);
-	}
-	
-	public QnaDto getQnaContent(int id)
-	{
-		return mapper.getQnaContent(id);
-	}
+	public String questionList(Model model );
+	public String writeQuestion(QuestionDto questionDto , HttpSession session);
+	public void deleteQuestion(int questionId);
+	public String getQnaContent(Model model,int id);
+
 }

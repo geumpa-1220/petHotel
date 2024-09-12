@@ -9,7 +9,7 @@ import com.example.petHotel.dto.QuestionDto;
 @Mapper
 public interface QuestionMapper {
 
-	ArrayList<QuestionDto> questions(int userid);
+	ArrayList<QuestionDto> questionList();
 	void qinsert(QuestionDto questionDto);
 	void qdelete(int questionId);
 	QnaDto getQnaContent(int id);

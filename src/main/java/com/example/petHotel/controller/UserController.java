@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 public class UserController {
 	
 	@Autowired
-	private UserService userservice;
+	private UserService userService;
 	
 	@GetMapping("/user/signup")
 	public String signupForm()
@@ -27,9 +27,9 @@ public class UserController {
 		return "/user/signup";
 	}
 	@PostMapping("/user/signup")
-	public String signup(UserDto userdto)
+	public String signup(UserDto userDto)
 	{
-		userservice.signUp(userdto);
+		userService.signUp(userDto);
 		return "redirect:/user/login";
 	}
 	
@@ -41,21 +41,7 @@ public class UserController {
 	@PostMapping("/user/login")
 	public String login(UserDto userdto , HttpSession session,Model model)
 	{
-		UserDto dto=userservice.login( userdto.getUsername() );
-		if( dto != null && dto.getPwd().equals( userdto.getPwd() ) )
-		{
-			session.setAttribute("id",dto.getId() );
-			session.setAttribute("username", dto.getUsername() );
-			session.setAttribute("role", dto.getRole() );
-			return "redirect:/main/index";
-		}
-		else
-		{
-			 model.addAttribute("userdto", userdto);
-		     model.addAttribute("error", "Invalid username or password.");
-			return "/user/login";
-		}
-		
+		return userService.login(userdto, session, model);
 	}
 	
 	@GetMapping("/user/logout")
@@ -65,8 +51,9 @@ public class UserController {
 		return "redirect:/main/index";
 	}
 	
+	//예약정보 들어올 예정
 	@GetMapping("/user/mypage")
-	public String mypage()
+	public String mypageForm()
 	{
 		return "/user/mypage";
 	}
@@ -80,22 +67,14 @@ public class UserController {
 	@PostMapping("/user/update")
 	public String update(UserDto userdto,HttpSession session)
 	{
-		Integer id=(Integer)session.getAttribute("id");
-		userdto.setId(id);
-		userservice.update(userdto);
-		
-		session.setAttribute("username", userdto.getUsername());
-		
-		return "redirect:/user/mypage";
+		return userService.update(userdto, session);
 	}
 	
 	@GetMapping("/user/delete")
 	public String delete(HttpSession session )
 	{
-		int id=(int) session.getAttribute("id");
-		userservice.deleteUser(id);
-		session.invalidate();
-		return "/main/index";
+		userService.deleteUser(session);
+		return "redirect:/main/index";
 	}
 	
 	

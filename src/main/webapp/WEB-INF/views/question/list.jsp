@@ -86,18 +86,25 @@
             </tr>
         </thead>
         <tbody>
-         <c:forEach var="qnaList"  items="${ questionList }">
+         <c:forEach var="qList"  items="${ questionList }">
             <tr>
-                <td><a href="../question/content?id=${qnaList.id}">${ sessionScope.username }</a></td>
-                <td><a href="../question/content?id=${qnaList.id}">${ qnaList.title }</a></td>
-                <td><a href="../question/content?id=${qnaList.id}">${ qnaList.qtime }</a></td>
+                <td><a href="../question/content?id=${qList.id}">${ qList.username }</a></td>
+                <td><a href="../question/content?id=${qList.id}">${ qList.title }</a></td>
+                <td><a href="../question/content?id=${qList.id}">${ qList.qtime }</a></td>
 				
-                <td>
-					<form action="/question/delete" method="post" style="display:inline;">
-					   <input type="hidden" name="questionId" value="${qnaList.id}">
-					   <input type="submit" value="DELETE">
-				    </form>				
-				</td>
+				<c:if test="${ qList.username == sessionScope.username }">
+                  <td>
+                    <form action="/question/delete" method="post" style="display:inline;">
+                     <input type="hidden" name="questionId" value="${qList.id}">
+                     <input type="submit" value="DELETE">
+                   </form>				
+                 </td>
+              </c:if>
+              <c:if test="${ qList.username != sessionScope.username }">
+                 <td></td>
+              </c:if>
+              
+
             </tr>
          </c:forEach>
         </tbody>

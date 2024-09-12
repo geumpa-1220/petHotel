@@ -1,6 +1,6 @@
 package com.example.petHotel.controller;
 
-import java.util.ArrayList;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,39 +10,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.petHotel.dto.AnswerDto;
-import com.example.petHotel.dto.QnaDto;
 import com.example.petHotel.service.AnswerService;
 
 @Controller
 public class AnswerController {
 	
 	@Autowired
-	private AnswerService service;
+	private AnswerService answerService;
 	
 	@GetMapping("/answer/list")
 	public String qnaList(Model model)
-	{
-		ArrayList<QnaDto> qnadto = service.getAdminQna();
-		model.addAttribute("allList", qnadto);
-		
-		return "/answer/list";
+	{	
+		return answerService.getAdminQna(model);
 	}
 
 	@GetMapping("/answer/content")
 	public String content(@RequestParam("id") int id ,Model model)
 	{
-		QnaDto qnadto = service.getQnaById(id);
-		model.addAttribute("content", qnadto);
-		
-		return "/answer/content";
+		return answerService.getQnaById(id, model);
 	}
 	
 	@PostMapping("/answer/write")
-	public String write(AnswerDto answerDto)
+	public String writeAnswer(AnswerDto answerDto)
 	{
-		service.write(answerDto);
-		
-		return "redirect:/answer/list";
+		return answerService.writeAnswer(answerDto);
 	}
 	
 	

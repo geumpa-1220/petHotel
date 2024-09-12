@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 public class AdminController {
 	
 	@Autowired
-	private AdminService service;
+	private AdminService adminService;
 	
 	@GetMapping("/admin/login")
 	public String loginForm()
@@ -25,24 +25,9 @@ public class AdminController {
 	@PostMapping("/admin/login")
 	public String loginOk(AdminDto adminDto , HttpSession session , Model model )
 	{
-		String username=adminDto.getUsername();
-		AdminDto dbDto=service.login(username);
-		
-		if( dbDto != null && dbDto.getPwd().equals( adminDto.getPwd() ) )
-		{
-			session.setAttribute("username", dbDto.getUsername());
-			session.setAttribute("id", dbDto.getId());
-			session.setAttribute("role", dbDto.getRole());
-			return "/main/index";
-		}
-		else
-		{
-			model.addAttribute("error", "Invalid username or password.");
-			model.addAttribute("admindto", adminDto);
-			return "/admin/login";
-		}
-		
+		return adminService.adminLogin(adminDto , session , model);
 	}
+	
 	
 	@GetMapping("/admin/logout")
 	public String logout(HttpSession session)
@@ -51,8 +36,10 @@ public class AdminController {
 		return "redirect:/main/index";
 	}
 	
+	
+	
 	@GetMapping("/admin/mypage")
-	public String mypage()
+	public String mypageForm()
 	{
 		return "/admin/mypage";
 	}
@@ -65,20 +52,14 @@ public class AdminController {
 	@PostMapping("/admin/update")
 	public String update(AdminDto adminDto , HttpSession session)
 	{
-		int id = (int) session.getAttribute("id");
-		adminDto.setId(id);
-		service.update(adminDto);
-		
-		session.setAttribute("username", adminDto.getUsername());
-		return "/admin/mypage";
+		return adminService.updateAdmin(adminDto, session);
 	}
 	
 	@GetMapping("/admin/delete")
-	public String delete(HttpSession session)
+	public String deleteAdmin(HttpSession session)
 	{
 		int id =(int) session.getAttribute("id");
-		service.delete(id);
-		
+		adminService.deleteAdmin(id);
 		session.invalidate();
 		
 		return "/main/index";

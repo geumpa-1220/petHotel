@@ -50,7 +50,6 @@
     }
     .datetime {
         text-align: right;
-        color: #888;
         font-size: 0.9em;
     }
 </style>
@@ -67,14 +66,14 @@
         </tr>
         <tr>
             <th>QUESTION</th>
-            <td class="datetime">${content.qtime}</td>
+            <th  class="datetime">${content.qtime}</th>
         </tr>
         <tr class="content-row">
             <td colspan="2">${content.content}</td>
         </tr>
         <tr>
             <th>ANSWER</th>
-            <td class="datetime">${content.atime != null ? content.atime : ''}</td>
+            <th class="datetime">${content.atime != null ? content.atime : ''}</th>
         </tr>
         <tr class="answer-row">
             <td colspan="2">${content.acontent != null ? content.acontent : 'no answer yet'}</td>

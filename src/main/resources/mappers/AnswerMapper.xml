@@ -16,7 +16,7 @@
       where question.id = #{id}
 </select>
 
-<insert id="write"  parameterType="com.example.petHotel.dto.AnswerDto">
+<insert id="writeAnswer"  parameterType="com.example.petHotel.dto.AnswerDto">
       insert into answer (qid,content)
       values ( #{qid} , #{content} )
 </insert>

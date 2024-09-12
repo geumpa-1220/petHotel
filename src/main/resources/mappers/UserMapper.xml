@@ -8,7 +8,7 @@
     values ( #{username} , #{pwd} )
 </insert>
 
-<select id="getuser"  parameterType="String" resultType="com.example.petHotel.dto.UserDto">
+<select id="login"  parameterType="String" resultType="com.example.petHotel.dto.UserDto">
    select * from user
    where username=#{username}
 </select>

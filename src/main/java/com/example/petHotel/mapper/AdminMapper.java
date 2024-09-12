@@ -7,7 +7,7 @@ import com.example.petHotel.dto.AdminDto;
 @Mapper
 public interface AdminMapper {
 	
-	AdminDto login(String username);
-    void update(AdminDto adminDto);
-    void delete(int id);
+	AdminDto adminLogin(String username);
+    void updateAdmin(AdminDto adminDto);
+    void deleteAdmin(int id);
 }

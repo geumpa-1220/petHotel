@@ -12,6 +12,6 @@ public interface AnswerMapper {
 	
 	ArrayList<QnaDto> getAdminQna();
 	QnaDto getQnaById(int id);
-	void write(AnswerDto answerDto);
+	void writeAnswer(AnswerDto answerDto);
 
 }

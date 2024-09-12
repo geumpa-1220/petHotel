@@ -4,11 +4,11 @@ import java.sql.Timestamp;
 
 import lombok.Data;
 
-@Data
+
 
 public class QuestionDto {
 	private int id,userid;
-	private String title,content;
+	private String username,title,content;
 	private Timestamp qtime;
 	
 	
@@ -23,6 +23,12 @@ public class QuestionDto {
 	}
 	public void setUserid(int userid) {
 		this.userid = userid;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getTitle() {
 		return title;
