@@ -3,7 +3,7 @@
 
 <mapper namespace="com.example.petHotel.mapper.AdminMapper">
 
-<select id="login" parameterType="String" resultType="com.example.petHotel.dto.AdminDto">
+<select id="adminLogin" parameterType="String" resultType="com.example.petHotel.dto.AdminDto">
       select * from admin
       where username=#{username}
 </select>
