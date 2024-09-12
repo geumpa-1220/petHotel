@@ -41,12 +41,12 @@ public class UserController {
 	@PostMapping("/user/login")
 	public String login(UserDto userdto , HttpSession session,Model model)
 	{
-		UserDto db_dto=userservice.login( userdto.getUsername() );
-		if( db_dto != null && db_dto.getPwd().equals( userdto.getPwd() ) )
+		UserDto dto=userservice.login( userdto.getUsername() );
+		if( dto != null && dto.getPwd().equals( userdto.getPwd() ) )
 		{
-			session.setAttribute("id",db_dto.getId() );
-			session.setAttribute("username", db_dto.getUsername() );
-			session.setAttribute("role", db_dto.getRole() );
+			session.setAttribute("id",dto.getId() );
+			session.setAttribute("username", dto.getUsername() );
+			session.setAttribute("role", dto.getRole() );
 			return "redirect:/main/index";
 		}
 		else
