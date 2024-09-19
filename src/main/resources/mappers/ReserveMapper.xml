@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.petHotel.mapper.ReserveMapper">
+
+
+ <select id = "getRoom">
+    
+ select * from rooms;
+ 
+ </select>
+ 
+ <select id = "reserveContent" resultType = "com.example.petHotel.dto.RoomDto">
+ 
+   select * from rooms where roomid = #{roomid}
+ 
+ </select>
+ 
+ <insert id = "reserveOk" parameterType = "com.example.petHotel.dto.ReserveDto">
+   insert into reserve(username,content,startDate,endDate,reserveday,roomid,phone,petsu,chongprice,reserveNum) 
+   
+   values(#{username},#{content},#{startDate},#{endDate},now(),#{roomid},#{phone},#{petsu},#{chongprice},#{reserveNum})
+ </insert>
+ 
+ <select id = "getreserveEnd" resultType = "com.example.petHotel.dto.ReserveDto">
+ 
+   select * from reserve where reserveNum = #{reserveNum}
+ </select>
+ 
+ 
+</mapper>
