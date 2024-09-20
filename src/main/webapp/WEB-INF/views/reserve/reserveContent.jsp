@@ -14,7 +14,7 @@
         margin: 20px auto;
         padding: 20px;
         background-color: white;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     }
 
     table {
@@ -65,6 +65,18 @@
     #petsuError, #phonechk {
         color: red;
     }
+
+    /* 사진을 세로로 정렬 */
+    .image-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .image-container img {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+    }
 </style>
 <script>
   function chongpriceadd() {
@@ -104,7 +116,14 @@
 </script>
 </head>
 <body>
+
 <div class="container">
+    <!-- 사진을 세로로 나열 -->
+    <div class="image-container">
+        <img src="../static/reserve/${rdto.rimg}" alt="방 사진">
+
+    </div>
+
     <form method="post" action="reserveOk" name="resForm" onsubmit="return check()">
         <input type="hidden" id="roomid" name="roomid" value="${roomid}">
         <input type="hidden" id="startDate" name="startDate" value="${startDate}">

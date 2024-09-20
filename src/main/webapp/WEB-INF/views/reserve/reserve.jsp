@@ -110,6 +110,15 @@
        .button-container input:hover {
            background-color: #555;
        }
+	   .calendar caption a {
+	       color: black;
+	       font-weight: bold;
+	       text-decoration: none;
+	   }
+
+	   .calendar caption a:hover {
+	       text-decoration: underline;
+	   }
    </style>
    <script>
            // JavaScript code remains unchanged
@@ -300,14 +309,12 @@
 	                    <caption>예약 가능한 방 목록</caption>
 	                    <div id="dateDifference">총 예약 기간: 0일</div>
 	                    <tr>
-	                        <td>방 사진</td>
 	                        <td>방 호수</td>
 	                        <td>가격</td>
 	                        <td>객실 선택</td>
 	                    </tr>
 	                    <c:forEach items="${rdto}" var="rdto">
 	                        <tr>
-	                            <td><img src="../static/reserve/${rdto.rimg}" alt="방 사진"></td>
 	                            <td>${rdto.title}</td>
 	                            <td>${rdto.price}</td>
 	                            <td>
