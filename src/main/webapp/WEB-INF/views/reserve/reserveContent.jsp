@@ -79,7 +79,7 @@
           chongprice1 = price * daydiff + (((petsu - 1) * 10000) * daydiff);
       }
 
-      document.getElementById("result").innerText = chongprice1 + "만원";
+      document.getElementById("result").innerText = chongprice1 + "원";
       document.getElementById("chongprice").value = chongprice1;
   }
 
@@ -126,7 +126,7 @@
             </tr>
             <tr>
                 <td>방 가격</td>
-                <td>${rdto.price}만원</td>
+                <td>${rdto.price}원</td>
             </tr>
             <tr>
                 <td>애완견 마리수 (최대: ${rdto.max})</td>
